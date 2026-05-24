@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"slices"
+)
 
 /*
 - Given an array of nums of size n
@@ -16,18 +19,10 @@ func main() {
 }
 
 func majorityElement(arr []int) int {
-	counts := make(map[int]int)
+	slices.Sort(arr)
 
-	for _, num := range arr {
-		counts[num]++
-	}
+	arrLength := len(arr)
 
-	threshold := len(arr) / 2
-	for num, count := range counts {
-		if count > threshold {
-			return num
-		}
-	}
+	return arr[arrLength/2]
 
-	return -1
 }
